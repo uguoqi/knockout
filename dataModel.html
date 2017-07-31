@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>创建数据模型和监控属性</title>
+	</head>
+	<body>
+		<div>
+			i am <span data-bind="text: personalName"></span>,i am <span data-bind="text: age"></span> years old;
+		</div>
+	</body>
+	<script src="js/knockout-3.4.2.js"></script>
+	<script>
+		/*创建一个viewmodel*/
+		/*var myViewModel = {
+			personalName: "xu",
+			age: 24
+		}*/
+		/*激活knockout*/
+//		ko.applyBindings(myViewModel);
+
+		var myViewModel = {
+			personalName: ko.observable("xu guoqi"),
+			age: ko.observable("24")
+		}
+		ko.applyBindings(myViewModel);
+	</script>
+</html>

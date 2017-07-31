@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>foreach绑定</title>
+		<script src="js/jquery-1.7.2.min.js"></script>
+		<script src="js/knockout-3.4.2.js"></script>
+	</head>
+	<body>
+		<!--<label>
+			<input type="checkbox" data-bind="checked: changeMessage"/>
+			Display　message
+		</label>
+		<p data-bind="if: changeMessage">Hera is a message</p>
+		
+		<ul data-bind="foreach: planets">
+			<li>
+				planets's name is <span data-bind="text: name"></span>
+				<br />
+				planets's capitao is <span data-bind="if: capital"><span data-bind="text: capital"></span></span>
+			</li>
+		</ul>
+		
+		<script>
+			ko.applyBindings({
+				changeMessage: ko.observable(false),
+				planets: ko.observableArray([
+					{name: "Mars", capital: null},
+					{name: "earth", capital: "beijing"}
+				])
+			})
+		</script>-->
+		
+		<!--<h3 data-bind="text:city"></h3>
+		<p data-bind="with: coords">
+			latitude is <span data-bind="text: latitude"></span>,
+			langtitude is <span data-bind="text: langtitude"></span>
+		</p>
+		<script>
+			ko.applyBindings({
+				city: ko.observable("beijign"),
+				coords: {
+					latitude: "-23232323",
+					langtitude: "233434"
+				}
+			})
+		</script>-->
+		
+		<form data-bind="submit: getTweets"> 
+     		Twitter account: 
+     		<input data-bind="value: twitterName" /> 
+     		<button type="submit">Get tweets</button> 
+ 		</form> 
+   
+ 		<div data-bind="with: resultData"> 
+    		<h3>Recent tweets fetched at <span data-bind="text: retrievalDate"> </span></h3> 
+     		<ol data-bind="foreach: topTweets"> 
+         		<li data-bind="text: text"></li> 
+     		</ol> 
+   
+     		<button data-bind="click: $parent.clearResults">Clear tweets</button> 
+ 		</div>
+   
+ 		<script type="text/javascript">
+     		function AppViewModel() {
+         		var self = this;
+         		self.twitterName = ko.observable('@StephenFry');
+         		self.resultData = ko.observable(); // No initial value 
+ 
+         		self.getTweets = function () {
+             		twitterApi.getTweetsForUser(self.twitterName(), function (data) {
+                 		self.resultData({
+                     		retrievalDate: new Date(),
+                     		topTweets: data.slice(0, 5)
+                 		});
+             		});
+         		}
+ 
+         		self.clearResults = function () {
+             		self.resultData(undefined);
+         		}
+     		}
+ 
+     		ko.applyBindings(new AppViewModel()); 
+     	</script>
+	</body>
+	
+</html>

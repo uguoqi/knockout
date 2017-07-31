@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>click绑定</title>
+		<script src="js/jquery-1.7.2.min.js"></script>
+		<script src="js/knockout-3.4.2.js"></script>
+	</head>
+	<body>
+		<!--<div>
+			you have click <span data-bind="text: numOfClick"></span> times;
+			<button data-bind="click: addNum">add 1</button>
+		</div>-->
+		
+		<!--传参数给click句柄-->
+		<!--<button data-bind="click: function(){viewModel.addNum('param1','param2')}"></button>-->
+		
+		<!--访问事件源对象-->
+		<!--<button data-bind="click: function(event){viewModel.addNum(event,'param1','param2')}"></button>-->
+		
+		<!--允许执行默认事件-->
+		<!--默认组织事件冒泡,阻止默认事件的继续进行,如果想要默认事件正常执行,可以再click的自定义函数里面返回true-->
+		
+		<!--防止事件冒泡-->
+		<!--默认情况下,knockout允许click事件向更高层的事件句柄冒泡执行.如果需要,可以通过额外的clickbubble来阻止事件冒泡执行-->
+		<!--<div data-bind="click: myDivHandler">
+			<button data-bind="click: myButtonHandler,clickBubble: false">click me</button>
+		</div>-->
+		<!--<script>
+			var viewModel = {
+					numOfClick: ko.observable(0),
+					addNum: function(){
+						var nums = this.numOfClick();
+						this.numOfClick(nums + 1)
+					},
+					myDivHandler: function(){
+						var nums = this.numOfClick();
+						this.numOfClick(nums + 3);
+					},
+					myButtonHandler: function(){
+						var nums = this.numOfClick();
+						this.numOfClick(nums + 2);
+					}
+			}
+				
+			ko.applyBindings(viewModel);
+		</script>-->
+		
+		
+		<!--<ul data-bind="foreach: places">
+			<li>
+				<span data-bind="text: $data">
+					
+				</span>
+				<button data-bind="click: $parent.removeItem">remove</button>
+			</li>
+		</ul>
+		<script>
+			function removeItem(){
+				var self = this;
+				self.places = ko.observableArray([
+					"beijing","shanghai","xiamen","wuhan","sichuan","xizang"
+				]),
+				self.removeItem = function(place){
+					self.places.remove(place);
+				}
+			}
+			
+			ko.applyBindings(new removeItem());
+		</script>-->
+		
+		<button data-bind="click: myFunction">click me</button>
+		<!--绑定更多的参数-->
+		<!--<button data-bind="click: function(data,event){myFunction(event,'param1','param2')}">click me</button>-->
+		<!--<button data-bind="click: myFunction.bind($data,'param1','param2')"></button>-->
+		<script>
+			var viewModel = {
+				myFunction: function(data,event){
+					if(event.shiftKey){
+						alert(1);
+					}else {
+						alert(2);
+					}
+				}
+			}
+			ko.applyBindings(viewModel);
+		</script>
+	</body>
+	
+</html>

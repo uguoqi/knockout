@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>html绑定</title>
+	</head>
+	<body>
+		<div data-bind="html:innerHtml">
+			
+		</div>
+	</body>
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/knockout-3.4.2.js"></script>
+	<script>
+		var viewModel = {
+			innerHtml: ko.observable()
+		}
+		
+		viewModel.innerHtml("<div>这里是一个div</div><p>这里面是一个p</p>");
+		
+		ko.applyBindings(viewModel);
+	</script>
+</html>

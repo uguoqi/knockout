@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>监控属性数组</title>
+	</head>
+	<body>
+		<ul data-bind="foreach: myInfo">
+			<li>
+				姓名: <span data-bind="text: name"></span>,
+				年龄: <span data-bind="text: age"></span>,
+				性别: <span data-bind="text: sex"></span>
+			</li>
+		</ul>
+		
+		<ol data-bind="foreach: taskList">
+			<li>
+				序号: <span data-bind="text: ind"></span>,
+				内容: <span data-bind="text: content"></span>,
+				截止日期: <span data-bind="text: dates"></span>
+			</li>
+		</ol>
+		
+		<button id="delete">删除</button>
+	</body>
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/knockout-3.4.2.js"></script>
+	<script>
+		var myInfo = ko.observableArray();
+		myInfo.push({
+			name: "xu",
+			age: "24",
+			sex: "男"
+		})
+		
+		var taskList = ko.observableArray([
+			{ind: 1,content: "完成静态网页",dates: "三天"},
+			{ind: 1,content: "完成静态网页",dates: "三天"}
+		])
+		
+		ko.applyBindings([myInfo, taskList]);
+		
+		var timer;
+		timer = setInterval(function(){
+			myInfo.unshift({
+				name: "xu" + Math.ceil(Math.random()*100),
+				age: Math.ceil(Math.random() * 10 + 20),
+				sex: Math.random() > 0.5 ? "男" : "女"
+			})
+		},3000)
+		
+		$("#delete").click(function (){
+//			myInfo.removeAll();
+			myInfo.remove(function (item){
+				return item.age > 25;
+			})
+			clearInterval(timer);
+		})
+	</script>
+</html>

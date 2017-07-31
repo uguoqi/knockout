@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>event绑定</title>
+		<script src="js/jquery-1.7.2.min.js"></script>
+		<script src="js/knockout-3.4.2.js"></script>
+	</head>
+	<body>
+		<!--event绑定在DOM元素上以便元素被触发的时候可以执行定义的JavaScript函数,常用的event事件句柄有keypress,mouseover,mouseout-->
+		<div data-bind="event: {mouseover: canSee,mouseout: notSee}">
+			mouseover me
+		</div>
+		<!--传参数给你事件句柄-->
+		<!--<div data-bind="event: {mouseover: function(){canSee('param1','param2')}}">
+			
+		</div>-->
+		
+		<div data-bind="visible: seeInfo">
+			info...
+		</div>
+		<script>
+			var viewModel = {
+				seeInfo: ko.observable(false),
+				canSee: function(){
+					this.seeInfo(true);
+				},
+				notSee: function(){
+					this.seeInfo(false);
+				}
+			}
+			ko.applyBindings(viewModel);
+		</script>
+		
+		<!--访问事件源对象-->
+		<div data-bind="event: {mouseover: muFun}">
+			
+		</div>
+		<script>
+			var viewModel = {
+				muFun: function(event){
+					if(event.keyCode == 23){
+						
+					}else {
+						
+					}
+				}
+			}
+		</script>
+		<!--<div data-bind="event: {mouseover: function(event){viewModel.muFun('param1','param2')}}"></div>-->
+		
+		<!--允许执行默认事件-->
+		<!--默认情况下是组织默认事件的执行,如果需要在event事件的同时执行默认事件,只需要在event的自定义JavaScript函数中返回TRUE-->
+		
+		<!--控制this句柄-->
+		
+		<!--防止事件冒泡-->
+		<div data-bind="event: {mouseover: myDivFun}">
+			<button data-bind="event: {mouseover: myButtonFun, mouseoverBubble: false}">mouseover me</button>
+		</div>
+	</body>
+	
+</html>

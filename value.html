@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>value绑定</title>
+		<script src="js/jquery-1.7.2.min.js"></script>
+		<script src="js/knockout-3.4.2.js"></script>
+	</head>
+	<body>
+		<!--value绑定主要用在表单控件 input textarea select-->
+		<!--<form data-bind="submit: subData">
+			<p>
+				Login name: <input type="text" data-bind="value: username"/>
+			</p>
+			<p>
+				password: <input type="password" data-bind="value: passwords"/>
+			</p>
+			<button type="submit">提交</button>
+		</form>
+		
+		<script>
+			var viewModel = {
+				username: ko.observable(""),
+				passwords: ko.observable(""),
+				subData: function(){
+					this.username("xu guoqi");
+					this.passwords("5211314");
+					data = {
+						username: this.username(),
+						loginPass: this.passwords()
+					}
+				}
+			}
+			ko.applyBindings(viewModel);
+		</script>-->
+		
+		<!--valueUpdate 默认有change keyup keypress afterkeydown-->
+		<p>
+			<h4>valueUpdate: change</h4>
+			please edit your value: <input type="text" data-bind="value: myValue1, valueUpdate: 'change'"/>
+		</p>
+		<p>
+			you have edited: <span data-bind="text: myValue1"></span>
+		</p>
+		<p>
+			<h4>valueUpdate: keyup</h4>
+			please edit your value: <input type="text" data-bind="value: myValue2, valueUpdate: 'keyup'"/>
+		</p>
+		<p>
+			you have edited: <span data-bind="text: myValue2"></span>
+		</p>
+		<p>
+			<h4>valueUpdate: keypress</h4>
+			please edit your value: <input type="text" data-bind="value: myValue3, valueUpdate: 'keypress'"/>
+		</p>
+		<p>
+			you have edited: <span data-bind="text: myValue3"></span>
+		</p>
+		<p>
+			<h4>valueUpdate: afterkeydown</h4>
+			please edit your value: <input type="text" data-bind="value: myValue4, valueUpdate: 'afterkeydown'"/>
+		</p>
+		<p>
+			you have edited: <span data-bind="text: myValue4"></span>
+		</p>
+		<script>
+			var viewModel = {
+				myValue1: ko.observable("Edit me"),
+				myValue2: ko.observable("Edit me"),
+				myValue3: ko.observable("Edit me"),
+				myValue4: ko.observable("Edit me")
+			}
+			ko.applyBindings(viewModel);
+		</script>
+	</body>
+	
+</html>

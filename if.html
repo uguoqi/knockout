@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>if绑定</title>
+	</head>
+	<body>
+		<label><input type="checkbox" data-bind="checked: changeShow"/> change show</label>
+		<p data-bind="if: changeShow">show or not show</p>
+		
+		<ul data-bind="foreach: planets">
+			<li>
+				name is <span data-bind="text: name"></span>,
+				<span data-bind="if: has">capital is <span data-bind="text: capital"></span></span>
+			</li>
+		</ul>
+	</body>
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/knockout-3.4.2.js"></script>
+	<script>
+		ko.applyBindings({
+			changeShow: ko.observable(true),
+			planets: [
+				{name: "Mars",has: false,capital: null},
+				{name: "Earth",has: true,capital: "beijing"}
+			]
+		})
+	</script>
+</html>

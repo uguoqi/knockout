@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>foreach绑定</title>
+	</head>
+	<body>
+		<!--循环遍历输出数组-->
+		<!--<table>
+			<thead>
+				<tr>
+					<td>firstName</td>
+					<td>lastName</td>
+				</tr>
+			</thead>
+			<tbody data-bind="foreach: people">
+				<tr>
+					<td data-bind="text: firstNames"></td>
+					<td data-bind="text: lastNames"></td>
+				</tr>
+			</tbody>
+		</table>-->
+		
+		<!--动态增加删除遍历节点-->
+		<!--<ul data-bind="foreach: person">
+			<li>
+				Name at position <span data-bind="text: $index"></span>;
+				<span data-bind="text: name"></span>
+				<a href="javascript:;" data-bind="click: $parent.removePerson">remove</a>
+			</li>
+		</ul>
+		<button data-bind="click: addPerson">add</button>-->
+		
+		<!--输出数组中的所有元素-->
+		<!--<ul data-bind="foreach: months">
+			<li data-bind="text: $data"></li>
+		</ul>-->
+		
+		
+		<!--as为foreach中的元素设置别名-->
+		<!--<ul data-bind="foreach: {data: categories, as: 'category'}">
+			<li>
+				<ul data-bind="foreach: {data: items, as: 'item'}">
+					<li>
+						<span data-bind="text: category.name"></span>
+						<span data-bind="text: item"></span>
+					</li>
+				</ul>
+			</li>
+		</ul>-->
+		
+		<!--在没有绑定属性的情况下使用foreach-->
+		<ul>
+			<li>Header Items</li>
+			<!--ko foreach: myItem-->
+				<li data-bind="text: $data"></li>
+			<!--/ko-->
+		</ul>
+	</body>
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/knockout-3.4.2.js"></script>
+	<script>
+		ko.applyBindings({
+			myItem: ["A","B","C"]
+		})
+		
+		/*var viewModel1 = {
+			people: [
+				{firstNames: "xu",lastNames: "xiansen"},
+				{firstNames: "chen",lastNames: "xiaoge"},
+				{firstNames: "li",lastNames: "feifei"}
+			]
+		}*/
+		
+		/*function appViewModel(){
+			var self = this;
+			self.person = ko.observableArray([
+				{name: "xu xiansen"},
+				{name: "chen xiansen"},
+				{name: "li xiansen"}
+			]);
+			self.addPerson = function(){
+				self.person.push({name: "new at " + new Date()});
+			};
+			self.removePerson = function(){
+				self.person.remove(this);
+			}
+		}*/
+		
+		/*function addMonths(){
+			var self = this;
+			self.months = ko.observableArray(["Jan","Feb","Mar"])
+		}*/
+		
+		/*var viewModel2 = {
+			categories: [
+				{name: "apple",items: ["red","green","orange"]},
+				{name: "banana",items: ["yellow","green"]}
+			]
+		}*/
+		
+//		ko.applyBindings([viewModel1,new appViewModel()]);
+//		ko.applyBindings(viewModel1);
+//		ko.applyBindings(new appViewModel());
+//		ko.applyBindings(new addMonths());
+//		ko.applyBindings(viewModel2);
+	</script>
+</html>

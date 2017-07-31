@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>attr绑定</title>
+	</head>
+	<body>
+		<a data-bind="attr: {href: hrefs, 'moreHref': moreHrefs}">点我</a>
+	</body>
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/knockout-3.4.2.js"></script>
+	<script>
+		var viewModel = {
+			hrefs: ko.observable("http://www.baidu.com"),
+			moreHrefs: ko.observable("more")
+		}
+		ko.applyBindings(viewModel);
+	</script>
+</html>

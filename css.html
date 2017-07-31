@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>类名绑定</title>
+	</head>
+	<style>
+		.colors{
+			color: red;
+		}
+		.fonts{
+			font-size: 16px;
+			font-weight: 700;
+		}
+	</style>
+	<body>
+		<p data-bind="css: {colors: colors,fonts: num() > 0}">明月几时有,把酒问青天</p>
+	</body>
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/knockout-3.4.2.js"></script>
+	<script>
+		var viewModel = {
+			colors: ko.observable(true),
+			num: ko.observable(3)
+		}
+		ko.applyBindings(viewModel);
+	</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>knockout实践</title>
+	</head>
+	<body>
+		<p>
+		    First value:
+		    <input data-bind="value: firstValue" />
+		</p>
+		<!-- two-way binding -->
+		<p>
+		    Second value:
+		    <input data-bind="value: secondValue" />
+		</p>
+		<!-- one-way binding -->
+		<p>
+		    Third value:
+		    <input data-bind="value: secondValue.length" />
+		</p>
+		<!-- no binding -->
+
+	</body>
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/knockout-3.4.2.js"></script>
+	<script type="text/javascript">
+	    var viewModel = {
+	        firstValue: ko.observable("hello"),
+	        // Observable        
+	        secondValue: "hello, again"
+	        // Not observable    
+	    };
+	    ko.applyBindings(viewModel);
+	</script>
+</html>
